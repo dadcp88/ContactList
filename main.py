@@ -1,5 +1,7 @@
+import os
 from mysqlconnection import init_database, contact_list_select
-import os.path
+from dotenv import load_dotenv
+load_dotenv(verbose=True)
 
 # This is a sample Python script.
 
@@ -21,3 +23,5 @@ if __name__ == '__main__':
        # print(f'Hola')
        for row in result:
            print(row)
+
+    print(os.getenv("PASSWORD"))

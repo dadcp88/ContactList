@@ -28,9 +28,13 @@ def init_database(db_name):
 
 def contact_list_select():
     db_name = 'CONTACT_LIST'
+    config = list()
+    with open(".env", "r") as connection_file:
+        config = connection_file.read().splitlines()
+    print(config)
 
-    #string_connect = open("queries/connectionstring.sql").read() TODO:use connection string file
-    #print(string_connect)
+    # string_connect = open("queries/.env").read() #TODO:use connection string file
+    # print(string_connect)
     try:
         with connect(
                 host="localhost",
@@ -59,7 +63,7 @@ def contact_list_select():
 # def contact_list_insert():
 #     db_name = 'CONTACT_LIST'
 #
-#     # string_connect = open("queries/connectionstring.sql").read() TODO:use connection string file
+#     # string_connect = open("queries/.env").read() TODO:use connection string file
 #     # print(string_connect)
 #     try:
 #         with connect(
