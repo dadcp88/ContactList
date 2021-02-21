@@ -25,8 +25,12 @@ def init_database(db_name):
     except Error as e:
         print(e)
 
+
 def contact_list_select():
     db_name = 'CONTACT_LIST'
+
+    #string_connect = open("queries/connectionstring.sql").read() TODO:use connection string file
+    #print(string_connect)
     try:
         with connect(
                 host="localhost",
@@ -34,11 +38,48 @@ def contact_list_select():
                 password="12345678",
                 database='CONTACT_LIST'
         ) as connection:
-            select_movies_query = "SELECT * FROM Person;"
-            with connection.cursor() as cursor:
-                cursor.execute(select_movies_query)
-                result = cursor.fetchall()
-            for row in result:
-                print(row)
+            # select_movies_query = "SELECT * FROM Person;"
+            filename = "queries/readDB.sql"
+            filecontent = open(filename)
+            content = filecontent.read().splitlines()
+
+            for line in content:
+                select_movies_query = line
+                #print(select_movies_query)
+                with connection.cursor() as cursor:
+                    cursor.execute(select_movies_query)
+                    result = cursor.fetchall()
+                    return result
+                # for row in result:
+                #     print(row)
     except Error as e:
         print(e)
+#
+
+# def contact_list_insert():
+#     db_name = 'CONTACT_LIST'
+#
+#     # string_connect = open("queries/connectionstring.sql").read() TODO:use connection string file
+#     # print(string_connect)
+#     try:
+#         with connect(
+#                 host="localhost",
+#                 user="root",
+#                 password="12345678",
+#                 database='CONTACT_LIST'
+#         ) as connection:
+#             # select_movies_query = "SELECT * FROM Person;"
+#             filename = "queries/readDB.sql"
+#             filecontent = open(filename)
+#             content = filecontent.read().splitlines()
+#
+#             for line in content:
+#                 select_movies_query = line
+#                 # print(select_movies_query)
+#                 with connection.cursor() as cursor:
+#                     cursor.execute(select_movies_query)
+#                     result = cursor.fetchall()
+#                 #print(result)
+#                 # return(result)
+#     except Error as e:
+#         print(e)
