@@ -1,1 +1,1 @@
-INSERT INTO PERSON ('Name','email') VALUES ('${NAME}','${EMAIL}');
+INSERT INTO `CONTACT_LIST`.`Person`(`Name`,`email`,`address`,`phone_number`) VALUES ('{}','{}','{}','{}');

@@ -46,15 +46,31 @@ def mysql_connection():
 def contact_list_select():
     connection = mysql_connection()  # using the function created to make the connection to mysql server
     filename = get_query('readDB.sql')  # you have to specify the query file you wan to use into get_query function
-    #filename is the content of the file, the query itself
+    # filename is the content of the file, the query itself
     cursor = connection.cursor()
     cursor.execute(filename)
     result = cursor.fetchall()
     return result
 
-def contact_list_insert(name,email):
+def contact_list_select_last():
+    connection = mysql_connection()  # using the function created to make the connection to mysql server
+    filename = get_query('lastresultDB.sql')  # you have to specify the query file you wan to use into get_query function
+    # filename is the content of the file, the query itself
+    cursor = connection.cursor()
+    cursor.execute(filename)
+    result = cursor.fetchall()
+    return result
+
+
+def contact_list_insert(name_parameter, email_parameter, address_parameter, phone_number_parameter):
     connection = mysql_connection()  # using the function created to make the connection to mysql server
     filename = get_query('insertDB.sql')  # you have to specify the query file you wan to use into get_query function
-    print = filename
+    prepare_query = filename.format(name_parameter, email_parameter, address_parameter, phone_number_parameter)#insert the variables sent by the user into the query
+    cursor = connection.cursor()
+    cursor.execute(prepare_query) #prepare te query for execution
+    connection.commit() #actually run the query
+    connection.close() #close the connection to mysql
+    register_added = contact_list_select_last()
+    return register_added
 
 
