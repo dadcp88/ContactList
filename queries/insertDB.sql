@@ -1,0 +1,1 @@
+INSERT INTO PERSON ('Name','email') VALUES ('${NAME}','${EMAIL}');
