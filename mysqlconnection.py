@@ -2,7 +2,7 @@ import os
 from mysql.connector import connect, Error
 from selectquery import get_query
 
-
+#using environment variables
 def mysql_connection():
     connection = connect(
         host=os.getenv("HOST"),
@@ -43,7 +43,7 @@ def mysql_connection():
 #         print(e)
 
 
-def contact_list_select():
+def contact_list_select(): #search into database for a register
     connection = mysql_connection()  # using the function created to make the connection to mysql server
     filename = get_query('readDB.sql')  # you have to specify the query file you wan to use into get_query function
     # filename is the content of the file, the query itself
@@ -52,7 +52,7 @@ def contact_list_select():
     result = cursor.fetchall()
     return result
 
-def contact_list_select_last():
+def contact_list_select_last(): #retreive the last register of the database
     connection = mysql_connection()  # using the function created to make the connection to mysql server
     filename = get_query('lastresultDB.sql')  # you have to specify the query file you wan to use into get_query function
     # filename is the content of the file, the query itself
@@ -62,7 +62,7 @@ def contact_list_select_last():
     return result
 
 
-def contact_list_insert(name_parameter, email_parameter, address_parameter, phone_number_parameter):
+def contact_list_insert(name_parameter, email_parameter, address_parameter, phone_number_parameter): #insert a new contact into the database
     connection = mysql_connection()  # using the function created to make the connection to mysql server
     filename = get_query('insertDB.sql')  # you have to specify the query file you wan to use into get_query function
     prepare_query = filename.format(name_parameter, email_parameter, address_parameter, phone_number_parameter)#insert the variables sent by the user into the query
