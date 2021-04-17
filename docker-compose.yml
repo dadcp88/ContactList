@@ -1,0 +1,14 @@
+version: '3'
+services:
+  mysqlvolume6:
+    image: mysql/mysql-server
+    volumes:
+      - "..\\DockerVolume:/var/lib/mysql"
+    restart: always
+    ports:
+      - 3306:3306
+    environment:
+      MYSQL_ROOT_PASSWORD: 12345678
+      MYSQL_DATABASE: CONTACT_LIST
+      MYSQL_USER: root
+      MYSQL_PASSWORD: 12345678
