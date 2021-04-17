@@ -43,7 +43,7 @@ def mysql_connection():
 #         print(e)
 
 
-def contact_list_select(): #search into database for a register
+def contact_list_select(): #retreive info database for a register
     connection = mysql_connection()  # using the function created to make the connection to mysql server
     filename = get_query('readDB.sql')  # you have to specify the query file you wan to use into get_query function
     # filename is the content of the file, the query itself
@@ -73,4 +73,14 @@ def contact_list_insert(name_parameter, email_parameter, address_parameter, phon
     register_added = contact_list_select_last()
     return register_added
 
+def contact_list_search(search_parameter): #search for a specific contact
+    connection = mysql_connection()  # using the function created to make the connection to mysql server
+    filename = get_query('searchDB.sql')  # you have to specify the query file you wan to use into get_query function
+    prepare_query = filename.format(search_parameter)
+    print(prepare_query)
+    # filename is the content of the file, the query itself
+    cursor = connection.cursor()
+    cursor.execute(prepare_query)
+    result = cursor.fetchall()
+    return result
 
