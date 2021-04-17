@@ -31,4 +31,4 @@ if __name__ == '__main__':
             print("Contact Added.. here is it")
             print(result)
         else:
-            print('The contact wasnt added... something broke')
+            print('The contact wasnt added... something is broke.')
