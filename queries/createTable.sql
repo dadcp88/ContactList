@@ -1,3 +1,4 @@
+USE CONTACT_LIST;
 CREATE TABLE `Person` (
   `idPerson` int NOT NULL AUTO_INCREMENT,
   `Name` varchar(45) DEFAULT NULL,
