@@ -16,7 +16,8 @@ if __name__ == '__main__':
         print(f'1-Retreive Full contact List\n'
               f'2-Retreive last contact created\n'
               f'3-Search for a contact by name\n'
-              f'4-Create a new Contact\n\n')
+              f'4-Create a new Contact\n'
+              f'5-Salir\n\n')
         user_choice = input(f'Choose your option: ')
 
         if user_choice == '1':
@@ -45,6 +46,12 @@ if __name__ == '__main__':
                 answer = False
             else:
                 print('The contact wasnt added... something is broke.')
+
+        if user_choice == '5':
+                print('ok.. Bye')
+                answer = False
+                break
+
 
         if answer == True:
             print('Select a valid option')
